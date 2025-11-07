@@ -10,7 +10,7 @@
 </head>
 <body>
 <?php
-    include_once 'controller/navegacao.php';
+    include_once 'Controller/Navegacao.php';
 ?>
 </body>
 </html>

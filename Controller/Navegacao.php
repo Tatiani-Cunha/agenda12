@@ -176,14 +176,66 @@
                                                     
                                                     }
                                                     else{
-                                                        if(isset($_POST["btnPrincipal"]) || isset($_POST["btnAtualizacaoCadastro"]) || isset($_POST["btnCadRealizado"])
-                                                        || isset($_POST["btnInfInserir"]) || isset($_POST["btnInfExcluir"]))
+                                                        if(isset($_POST["btnLoginADM"]))
                                                         {
-                                                            include_once '../View/principal.php';
+                                                            require_once '../Controller/AdministradorController.php';
+                                                        
+                                                            $aController = new AdministradorController();
+                                                            
+                                                            if($aController->login($_POST['txtLoginADM'], $_POST['txtSenhaADM']))
+                                                            {           
+                                                                include_once '../View/ADMPrincipal.php';
+                                                            }
+                                                            else
+                                                            {
+                                                                include_once '../View/cadastroNaoRealizado.php';
+                                                            }
                                                         }
-                                                        else
-                                                        {
-                                                            include_once 'View/login.php';
+                                                        else{
+                                                            if(isset($_POST["btnListarCadastrados"]) || isset($_POST["btnVoltarLista"]))
+                                                            {
+                                                                       
+                                                                    include_once '../View/ADMListarCadastrados.php';
+                                                            }
+                                                            else{
+                                                                if(isset($_POST["btnListarAdministradores"]))
+                                                                {
+                                                                       
+                                                                    include_once '../View/ADMListarAdministradores.php';
+                                                                }
+                                                                else{
+                                                                    if(isset($_POST["btnVoltar"]))
+                                                                    {
+                                                                        
+                                                                        include_once '../View/ADMPrincipal.php';
+                                                                    }
+                                                                    else{
+                                                                        if(isset($_POST["btnADM"]))
+                                                                        {
+                                                                            
+                                                                            include_once '../View/ADMLogin.php';
+                                                                        }
+                                                                        else{
+                                                                            if(isset($_POST["btnVisualizar"]))
+                                                                            {
+                                                                                $_SESSION["IDUsuario"] = $_POST['id'];
+                                                                                include_once '../View/ADMVisualizarCadastro.php';
+                                                                            }
+                                                                            else{
+                                                                                if(isset($_POST["btnPrincipal"]) || isset($_POST["btnAtualizacaoCadastro"]) || isset($_POST["btnCadRealizado"])
+                                                                                || isset($_POST["btnInfInserir"]) || isset($_POST["btnInfExcluir"]))
+                                                                                {
+                                                                                    include_once '../View/principal.php';
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    include_once 'View/login.php';
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
                                                         }
                                                     }
                                                 }

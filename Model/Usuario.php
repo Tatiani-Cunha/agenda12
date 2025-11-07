@@ -73,7 +73,11 @@ class Usuario
     //Métodos Banco de Dados
     public function inserirBD()
     {
-        require_once 'ConexaoBD.php';   
+        if(file_exists(__DIR__ . '/ConexaoBD.php')) {
+            require_once __DIR__ . '/ConexaoBD.php';
+        } else {
+            require_once 'ConexaoBD.php';
+        }   
         
         $con = new ConexaoBD();
         $conn = $con->conectar();
@@ -97,7 +101,11 @@ class Usuario
 
     public function carregarUsuario($cpf)
     {
-        require_once 'ConexaoBD.php';   
+        if(file_exists(__DIR__ . '/ConexaoBD.php')) {
+            require_once __DIR__ . '/ConexaoBD.php';
+        } else {
+            require_once 'ConexaoBD.php';
+        }   
         
         $con = new ConexaoBD();
         $conn = $con->conectar();
@@ -105,7 +113,7 @@ class Usuario
             die("Connection failed: " . $conn->connect_error);
         } 
 
-        $sql = "SELECT * FROM usuario WHERE cpf =  ".$cpf ;
+        $sql = "SELECT * FROM usuario WHERE cpf = '".$cpf."'" ;
         $re = $conn->query($sql);
         $r = $re->fetch_object();
         if($r != null)
@@ -128,7 +136,11 @@ class Usuario
 
     public function atualizarBD()
     {
-        require_once 'ConexaoBD.php';   
+        if(file_exists(__DIR__ . '/ConexaoBD.php')) {
+            require_once __DIR__ . '/ConexaoBD.php';
+        } else {
+            require_once 'ConexaoBD.php';
+        }   
         $con = new ConexaoBD();
         $conn = $con->conectar();
         if ($conn->connect_error) {

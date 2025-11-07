@@ -4,7 +4,7 @@ class ConexaoBD{
     
     private $servername = "localhost";
     private $username = "root";
-    private $password = "usbw";
+    private $password = "";
     private $dbname = "projeto_final";
 
     public function conectar()
