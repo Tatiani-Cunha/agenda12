@@ -31,14 +31,20 @@
 	
 	<div class="w3-row w3-section">
 		<div class="w3-half">
-			<button name="btnLogin" class="w3-button w3-block w3-margin w3-blue  w3-cell w3-round-large" style="width: 90%;">Entrar</button>
+			<button name="btnLogin" class="w3-button w3-block w3-margin w3-blue w3-cell w3-round-large" style="width: 90%;">Entrar</button>
 		</div>
 		<div class="w3-half">
 		<button name="btnPrimeiroAcesso" class="w3-button w3-block w3-margin w3-blue w3-cell w3-round-large" style="width: 90%;">Primeiro Acesso?</button>
 		</div>
 	</div>
 	
-</form>
+	<div class="w3-row w3-section">
+		<div class="w3-center">
+			<button name="btnADM" class="w3-button w3-block w3-margin w3-blue w3-cell w3-round-large" style="width: 90%;">Login como Administrador</button>
+		</div>
+	</div>
 
+</form>
+	
 </body>
 </html>

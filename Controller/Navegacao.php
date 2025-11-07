@@ -21,7 +21,12 @@
             }
         }
         else{
-            if(isset($_POST["btnCadastrar"]))
+            if(isset($_POST["btnADM"]))
+            {
+                include_once '../View/ADMLogin.php';
+            }
+            else{
+                if(isset($_POST["btnCadastrar"]))
             {
                 require_once '../Controller/UsuarioController.php';
                 $uController = new UsuarioController();
@@ -229,7 +234,7 @@
                                                                                 }
                                                                                 else
                                                                                 {
-                                                                                    include_once 'View/login.php';
+                                                                                    include_once '../View/login.php';
                                                                                 }
                                                                             }
                                                                         }
@@ -249,4 +254,5 @@
                 }
             }
         }
+    }
 ?>
