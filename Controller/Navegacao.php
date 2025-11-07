@@ -1,72 +1,88 @@
 <?php
 
+    // Detectar o diretório base correto de forma mais robusta
+    $currentDir = __DIR__;
+    $projectRoot = dirname($currentDir);
+    
+    // Se estamos no diretório Controller, voltar um nível
+    if (basename($currentDir) === 'Controller') {
+        $basePath = '../';
+    } else {
+        $basePath = '';
+    }
+    
+    // Debug para verificar caminhos
+    // echo "Current Dir: " . $currentDir . "<br>";
+    // echo "Base Path: " . $basePath . "<br>";
+    // echo "Looking for View: " . $basePath . 'View/primeiroAcesso.php' . "<br>";
+
     if(isset($_POST["btnPrimeiroAcesso"]))
     {
-        include_once '../View/primeiroAcesso.php';
+        include_once $basePath . 'view/primeiroAcesso.php';
     }
     else{
         if(isset($_POST["btnLogin"]))
         {
-            require_once '../Controller/UsuarioController.php';
+            require_once $basePath . 'Controller/UsuarioController.php';
         
             $uController = new UsuarioController();
             
             if($uController->login($_POST['txtLogin'], $_POST['txtSenha']))
             {           
-                include_once '../View/principal.php';
+                include_once $basePath . 'View/principal.php';
             }
             else
             {
-                include_once '../View/cadastroNaoRealizado.php';
+                include_once $basePath . 'View/cadastroNaoRealizado.php';
             }
         }
         else{
             if(isset($_POST["btnADM"]))
             {
-                include_once '../View/ADMLogin.php';
+                include_once $basePath . 'View/ADMLogin.php';
             }
             else{
                 if(isset($_POST["btnCadastrar"]))
-            {
-                require_once '../Controller/UsuarioController.php';
+                {
+                    require_once $basePath . 'Controller/UsuarioController.php';
                 $uController = new UsuarioController();
                 
                 if($uController->inserir($_POST["txtNome"], $_POST["txtCPF"], $_POST["txtEmail"], $_POST['txtSenha']))
                 {           
-                    include_once '../View/cadastroRealizado.php';
+                    include_once $basePath . 'view/cadastroRealizado.php';
                 }
                 else
                 {
-                    include_once '../View/cadastroNaoRealizado.php';
+                    include_once $basePath . 'view/cadastroNaoRealizado.php';
                 }
             }
             else{
 
                 if(isset($_POST["btnCadRealizado"]))
                 {
-                    include_once '../View/principal.php';
+                    include_once $basePath . 'View/principal.php';
                 }
                 else{
                     if(isset($_POST["btnCadNRealizado"]))
                     {
-                        include_once '../View/primeiroAcesso.php';
+                        include_once $basePath . 'view/primeiroAcesso.php';
                     }
                     else
                     {       
                         if(isset($_POST["btnAtualizar"]))
                         {
-                            require_once '../Controller/UsuarioController.php';
+                            require_once $basePath . 'Controller/UsuarioController.php';
                         
                             $uController = new UsuarioController();
                             
                             if($uController->atualizar($_POST["txtID"], $_POST["txtNome"], $_POST["txtCPF"], $_POST["txtEmail"],
                             date('Y-m-d', strtotime($_POST['txtData']))))
                             {           
-                                include_once '../View/atualizacaoRealizada.php';
+                                include_once $basePath . 'View/atualizacaoRealizada.php';
                             }
                             else
                             {
-                                include_once '../View/operacaoNaoRealizada.php';
+                                include_once $basePath . 'View/operacaoNaoRealizada.php';
                             }
                         
                         }
@@ -74,54 +90,54 @@
                         {
                             if(isset($_POST["btnAddFormacao"]))
                             {
-                                require_once '../Controller/FormacaoAcadController.php';
-                                include_once '../Model/Usuario.php';
+                                require_once $basePath . 'Controller/FormacaoAcadController.php';
+                                include_once $basePath . 'Model/Usuario.php';
                             
                                 $fController = new FormacaoAcadController();
                                 
                                 if($fController->inserir(date('Y-m-d', strtotime($_POST['txtInicioFA'])), date('Y-m-d', strtotime($_POST["txtFimFA"])), $_POST["txtDescFA"], unserialize($_SESSION['Usuario'])->getID()) != false)
                                 {           
-                                    include_once '../View/cadastroRealizado.php';
+                                    include_once $basePath . 'view/cadastroRealizado.php';
                                 }
                                 else
                                 {
-                                    include_once '../View/cadastroNaoRealizado.php';
+                                    include_once $basePath . 'view/cadastroNaoRealizado.php';
                                 }
                             
                             }
                             else{
                                     if(isset($_POST["btnExcluirFA"]))
                                     {
-                                        require_once '../Controller/FormacaoAcadController.php';
-                                        include_once '../Model/Usuario.php';
+                                        require_once $basePath . 'Controller/FormacaoAcadController.php';
+                                        include_once $basePath . 'Model/Usuario.php';
                                     
                                         $fController = new FormacaoAcadController();
                                         
                                         if($fController->remover($_POST['id']) == true)
                                         {           
-                                            include_once '../View/informacaoExcluida.php';
+                                            include_once $basePath . 'View/informacaoExcluida.php';
                                         }
                                         else
                                         {
-                                            include_once '../View/operacaoNaoRealizda.php';
+                                            include_once $basePath . 'View/operacaoNaoRealizada.php';
                                         }
                                     
                                     }
                                     else{
                                         if(isset($_POST["btnAddEP"]))
                                         {
-                                            require_once '../Controller/ExperienciaProfissionalController.php';
-                                            include_once '../Model/Usuario.php';
+                                            require_once $basePath . 'Controller/ExperienciaProfissionalController.php';
+                                            include_once $basePath . 'Model/Usuario.php';
                                         
                                             $epController = new ExperienciaProfissionalController();
                                             
                                             if($epController->inserir(date('Y-m-d', strtotime($_POST['txtInicioEP'])), date('Y-m-d', strtotime($_POST["txtFimEP"])), $_POST["txtEmpEP"], $_POST["txtDescEP"], unserialize($_SESSION['Usuario'])->getID()) != false)
                                             {           
-                                                include_once '../View/informacaoInserida.php';
+                                                include_once $basePath . 'View/informacaoInserida.php';
                                             }
                                             else
                                             {
-                                                include_once '../View/operacaoNRealizada.php';
+                                                include_once $basePath . 'View/operacaoNaoRealizada.php';
                                             }
                                         
                                         }
@@ -147,18 +163,18 @@
                                             else{
                                                 if(isset($_POST["btnAddOF"]))
                                                 {
-                                                    require_once '../Controller/OutrasFormacoesController.php';
-                                                    include_once '../Model/Usuario.php';
+                                                    require_once $basePath . 'Controller/OutrasFormacoesController.php';
+                                                    include_once $basePath . 'Model/Usuario.php';
                                                 
                                                     $fController = new OutrasFormacoesController();
                                                     
                                                     if($fController->inserir(date('Y-m-d', strtotime($_POST['txtInicioOF'])), date('Y-m-d', strtotime($_POST["txtFimOF"])), $_POST["txtDescOF"], unserialize($_SESSION['Usuario'])->getID()) != false)
                                                     {           
-                                                        include_once '../View/informacaoInserida.php';
+                                                        include_once $basePath . 'View/informacaoInserida.php';
                                                     }
                                                     else
                                                     {
-                                                        include_once '../View/operacaoNaoRealizada.php';
+                                                        include_once $basePath . 'View/operacaoNaoRealizada.php';
                                                     }
                                                 
                                                 }
@@ -183,17 +199,17 @@
                                                     else{
                                                         if(isset($_POST["btnLoginADM"]))
                                                         {
-                                                            require_once '../Controller/AdministradorController.php';
+                                                            require_once $basePath . 'Controller/AdministradorController.php';
                                                         
                                                             $aController = new AdministradorController();
                                                             
                                                             if($aController->login($_POST['txtLoginADM'], $_POST['txtSenhaADM']))
                                                             {           
-                                                                include_once '../View/ADMPrincipal.php';
+                                                                include_once $basePath . 'View/ADMPrincipal.php';
                                                             }
                                                             else
                                                             {
-                                                                include_once '../View/cadastroNaoRealizado.php';
+                                                                include_once $basePath . 'view/cadastroNaoRealizado.php';
                                                             }
                                                         }
                                                         else{
@@ -218,7 +234,7 @@
                                                                         if(isset($_POST["btnADM"]))
                                                                         {
                                                                             
-                                                                            include_once '../View/ADMLogin.php';
+                                                                            include_once $basePath . 'View/ADMLogin.php';
                                                                         }
                                                                         else{
                                                                             if(isset($_POST["btnVisualizar"]))
@@ -230,11 +246,11 @@
                                                                                 if(isset($_POST["btnPrincipal"]) || isset($_POST["btnAtualizacaoCadastro"]) || isset($_POST["btnCadRealizado"])
                                                                                 || isset($_POST["btnInfInserir"]) || isset($_POST["btnInfExcluir"]))
                                                                                 {
-                                                                                    include_once '../View/principal.php';
+                                                                                    include_once $basePath . 'View/principal.php';
                                                                                 }
                                                                                 else
                                                                                 {
-                                                                                    include_once '../View/login.php';
+                                                                                    include_once $basePath . 'View/login.php';
                                                                                 }
                                                                             }
                                                                         }

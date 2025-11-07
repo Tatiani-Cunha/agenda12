@@ -8,7 +8,11 @@ class UsuarioController{
     
     
     public function inserir($nome, $cpf, $email,$senha) {
-        require_once '../Model/Usuario.php';
+        if(file_exists(__DIR__ . '/../Model/Usuario.php')) {
+            require_once __DIR__ . '/../Model/Usuario.php';
+        } else {
+            require_once 'Model/Usuario.php';
+        }
         $usuario = new Usuario();
         $usuario->setNome($nome);
         $usuario->setCPF($cpf);
@@ -21,7 +25,11 @@ class UsuarioController{
     }
 
     public function atualizar($id, $nome, $cpf, $email, $dataNascimento) {
-        require_once '../Model/Usuario.php';
+        if(file_exists(__DIR__ . '/../Model/Usuario.php')) {
+            require_once __DIR__ . '/../Model/Usuario.php';
+        } else {
+            require_once 'Model/Usuario.php';
+        }
         $usuario = new Usuario();
         $usuario->setId($id);
         $usuario->setNome($nome);
@@ -34,7 +42,11 @@ class UsuarioController{
     }
     public function login($cpf, $senha)
     {
-        require_once '../Model/Usuario.php';
+        if(file_exists(__DIR__ . '/../Model/Usuario.php')) {
+            require_once __DIR__ . '/../Model/Usuario.php';
+        } else {
+            require_once 'Model/Usuario.php';
+        }
         $usuario = new Usuario();
         $usuario->carregarUsuario($cpf);
         if($usuario->getSenha() == $senha)
@@ -51,11 +63,30 @@ class UsuarioController{
     }
     public function gerarLista()
     {
-        require_once '../Model/Administrador.php';
-        require_once '../Model/Usuario.php';
-        $u = new Usuario();
+        if(file_exists(__DIR__ . '/../Model/Usuario.php')) {
+            require_once __DIR__ . '/../Model/Usuario.php';
+        } else {
+            require_once 'Model/Usuario.php';
+        }
         
-        return $results = $u->listaCadastrados();
+        if(file_exists(__DIR__ . '/../Model/ConexaoBD.php')) {
+            require_once __DIR__ . '/../Model/ConexaoBD.php';
+        } else {
+            require_once 'Model/ConexaoBD.php';
+        }
+        
+        $con = new ConexaoBD();
+        $conn = $con->conectar();
+        
+        if ($conn->connect_error) {
+            return false;
+        }
+        
+        $sql = "SELECT idusuario, nome, cpf, email FROM usuario ORDER BY nome";
+        $result = $conn->query($sql);
+        $conn->close();
+        
+        return $result;
     }
 }
 

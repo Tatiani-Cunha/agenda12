@@ -7,7 +7,11 @@ if(!isset($_SESSION))
 class ExperienciaProfissionalController{
     
     public function inserir($inicio, $fim, $empresa, $descricao,$idusuario) {
-        require_once '../Model/ExperienciaProfissional.php';
+        if(file_exists(__DIR__ . '/../Model/ExperienciaProfissional.php')) {
+            require_once __DIR__ . '/../Model/ExperienciaProfissional.php';
+        } else {
+            require_once 'Model/ExperienciaProfissional.php';
+        }
         $expP = new ExperienciaProfissional();
         $expP->setInicio($inicio);
         $expP->setFim($fim);

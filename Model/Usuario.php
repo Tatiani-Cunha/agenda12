@@ -105,7 +105,7 @@ class Usuario
             die("Connection failed: " . $conn->connect_error);
         } 
 
-        $sql = "SELECT * FROM usuario WHERE cpf =  ".$cpf ;
+        $sql = "SELECT * FROM usuario WHERE cpf = '".$cpf."'";
         $re = $conn->query($sql);
         $r = $re->fetch_object();
         if($r != null)

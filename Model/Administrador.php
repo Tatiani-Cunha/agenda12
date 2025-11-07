@@ -59,7 +59,7 @@ class Administrador
             die("Connection failed: " . $conn->connect_error);
         } 
 
-        $sql = "SELECT * FROM administrador WHERE cpf =  ".$cpf ;
+        $sql = "SELECT * FROM administrador WHERE cpf = '".$cpf."'";
         $re = $conn->query($sql);
         $r = $re->fetch_object();
         if($r != null)
