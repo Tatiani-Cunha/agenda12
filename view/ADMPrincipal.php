@@ -44,7 +44,7 @@
     <!--Inicial -->
     <br>
 
-    <form action="/Controller/Navegacao.php" method="post" class="w3-container w3-light-grey w3-text-blue w3-margin w3-center">
+    <form action="../Controller/Navegacao.php" method="post" class="w3-container w3-light-grey w3-text-blue w3-margin w3-center">
         <input type="hidden" name="nome_form" value="frmLoginADM" />
        
             

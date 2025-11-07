@@ -11,7 +11,7 @@ class UsuarioController{
         if(file_exists(__DIR__ . '/../Model/Usuario.php')) {
             require_once __DIR__ . '/../Model/Usuario.php';
         } else {
-            require_once 'Model/Usuario.php';
+            require_once '../Model/Usuario.php';
         }
         $usuario = new Usuario();
         $usuario->setNome($nome);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt_BR">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
 	<title>Administrador</title>
 </head>
 <body>
-<form action="/Controller/Navegacao.php" method="post" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin w3-display-middle" style="width: 30%;">
+<form action="../Controller/Navegacao.php" method="post" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin w3-display-middle" style="width: 30%;">
 	<input type="hidden" name="nome_form" value="frmLoginADM" />
     <h2 class="w3-center">Administrador</h2>
  	<div class="w3-row w3-section">
