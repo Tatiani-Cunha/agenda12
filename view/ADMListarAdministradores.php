@@ -8,6 +8,22 @@
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title>Administradores Cadastrados</title>
+    <style>
+        /* Texto dos botões em branco */
+        .w3-button, .w3-btn {
+            color: white !important;
+        }
+        
+        /* Cabeçalhos das tabelas em branco */
+        .w3-table th, .w3-table-all th {
+            color: white !important;
+        }
+
+        /* Itens das tabelas em cyan */
+        .w3-table td, .w3-table-all td {
+            color: #00bcd4 !important; /* Cor cyan */
+        }
+    </style>
 </head>
 <body>
 <?php
@@ -28,7 +44,7 @@
         <div class="w3-container">
             <table class="w3-table-all w3-centered">
             <thead>   
-                <tr class="w3-center w3-blue">
+                <tr class="w3-center w3-cyan">
                     <th>Código</th>
                     <th>Nome</th>
                     <th>CPF</th>
@@ -61,7 +77,7 @@
 	<form action="../Controller/Navegacao.php" method="post" class="w3-container w3-light-grey w3-text-blue w3-margin w3-center" style="width: 30%;">
 		<div class="w3-row w3-section">
 			<div>
-				<button name="btnVoltar" class="w3-button w3-block w3-margin w3-blue w3-cell w3-round-large" style="width: 90%;">
+				<button name="btnVoltar" class="w3-button w3-block w3-margin w3-cyan w3-cell w3-round-large" style="width: 90%;">
 					Voltar
 				</button>
 			</div>

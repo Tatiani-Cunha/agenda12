@@ -8,6 +8,22 @@
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title>Usuário</title>
+    <style>
+        /* Texto dos botões em branco */
+        .w3-button, .w3-btn {
+            color: white !important;
+        }
+        
+        /* Cabeçalhos das tabelas em branco */
+        .w3-table th, .w3-table-all th {
+            color: white !important;
+        }
+
+        /* Itens das tabelas em cyan */
+        .w3-table td, .w3-table-all td {
+            color: #00bcd4 !important; /* Cor cyan */
+        }
+    </style>
 </head>
 <body>
 <?php
@@ -30,22 +46,22 @@
     <!--Incial -->
     <header class="w3-container w3-padding-32 w3-center ">
         <h1 class="w3-text-white w3-panel w3-cyan w3-round-large">
-           <?php echo $u->getNome();?> Curriculo 
+           Currículo do(a) <?php echo $u->getNome();?>
         </h1>
     </header>
     <div class="w3-padding-128 w3-content w3-text-grey">
         <div class="w3-container">
             <h2 class="w3-text-white w3-panel w3-cyan w3-round-large">
-                NOME: <?php echo $u->getNome();?>  
+                Nome: <?php echo $u->getNome();?>  
             </h2>
             <h2 class="w3-text-white w3-panel w3-cyan w3-round-large">
             CPF: <?php echo $u->getCPF();?>  
             </h2>
             <h2 class="w3-text-white w3-panel w3-cyan w3-round-large">
-            EMAIL: <?php echo $u->getEmail();?>  
+            e-mail: <?php echo $u->getEmail();?>  
             </h2>
             <h2 class="w3-text-white w3-panel w3-cyan w3-round-large">
-            DATA DE NASCIMENTO: <?php echo $u->getDataNascimento();?>  
+            Data de Nascimento: <?php echo $u->getDataNascimento();?>  
             </h2>
         </div>
     </div>
@@ -58,7 +74,7 @@
         <div class="w3-container">
             <table class="w3-table-all w3-centered">
             <thead>   
-                <tr class="w3-center w3-blue">
+                <tr class="w3-center w3-cyan">
                     <th>Início</th>
                     <th>Fim</th>
                     <th>Descrição</th>
@@ -89,7 +105,7 @@
         <div class="w3-container">
             <table class="w3-table-all w3-centered">
             <thead>   
-                <tr class="w3-center w3-blue">
+                <tr class="w3-center w3-cyan">
                     <th>Início</th>
                     <th>Fim</th>
                     <th>Empresa</th>
@@ -115,11 +131,14 @@
     </div>
     <br>
     <br>
+    <h1 class="  w3-text-cyan w3-round-large w3-center">
+           Outras Formações
+    </h1>
     <div class="w3-padding-128 w3-content w3-text-grey">  
          <div class="w3-container">
             <table class="w3-table-all w3-centered">
             <thead>   
-                <tr class="w3-center w3-blue">
+                <tr class="w3-center w3-cyan">
                     
                     <th>Início</th>
                     <th>Fim</th>
@@ -150,7 +169,7 @@
 	<form action="../Controller/Navegacao.php" method="post" class="w3-container w3-light-grey w3-text-blue w3-margin w3-center" style="width: 30%;">
 		<div class="w3-row w3-section">
 			<div>
-				<button name="btnVoltarLista" class="w3-button w3-block w3-margin w3-blue w3-cell w3-round-large" style="width: 90%;">
+				<button name="btnVoltarLista" class="w3-button w3-block w3-margin w3-cyan w3-cell w3-round-large" style="width: 90%;">
 					Voltar
 				</button>
 			</div>
